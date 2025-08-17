@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>แก้ไขหนังสือ</h2>
+<form method="post">
+    ชื่อหนังสือ: <input type="text" name="title" value="{{ book[1] }}" required><br><br>
+    ผู้แต่ง: <input type="text" name="author" value="{{ book[2] }}" required><br><br>
+    ปีที่พิมพ์: <input type="number" name="year" value="{{ book[3] }}" required><br><br>
+    หมวดหมู่:
+    <select name="category_id">
+        {% for cat in categories %}
+        <option value="{{ cat[0] }}" {% if cat[0] == book[4] %}selected{% endif %}>
+            {{ cat[1] }}
+        </option>
+        {% endfor %}
+    </select><br><br>
+    <button type="submit">อัปเดต</button>
+</form>
+{% endblock %}
